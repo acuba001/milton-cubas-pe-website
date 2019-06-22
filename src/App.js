@@ -1,11 +1,20 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
+
+import Navbar from './components/layout/Navbar'
+
+import Content from './components/content/Content'
+
+import Footer from './components/layout/Footer'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Home</h1>
-    </div>
+    <React.Fragment>
+      <Navbar/>
+      <Content/>
+      <Footer/>
+    </React.Fragment>
   );
 }
 
