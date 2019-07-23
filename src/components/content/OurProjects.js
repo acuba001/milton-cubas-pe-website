@@ -16,11 +16,11 @@ export default function OurProjects() {
       </div>
       <div className="row">
         <div className="container">
-          <div class="row border border-danger p-3 mb-3">
+          <div className="row border border-danger p-3 mb-3">
             <div className="col-md-4">
               <img className="img-fluid mx-auto d-block" src={picture1} alt="Project 1" />
             </div>
-            <div class="col">
+            <div className="col">
               <h4>Lotos Condominium</h4>
               <p>June 2005</p>
               <p>918 Ocean Dr. Miami Beach, FL 33139</p>
@@ -33,11 +33,11 @@ export default function OurProjects() {
               </p>
             </div>
           </div>
-          <div class="row border border-danger p-3 mb-3">
+          <div className="row border border-danger p-3 mb-3">
             <div className="col-md-4">
               <img className="img-fluid mx-auto d-block" src={picture2} alt="Project 2" />
             </div>
-            <div class="col">
+            <div className="col">
               <h4>Starbucks Coffee</h4>
               <p>January 2005</p>
               <p>5XX W 45 St Hialeah, FL</p>
@@ -49,11 +49,11 @@ export default function OurProjects() {
               </p>
             </div>
           </div>
-          <div class="row border border-danger p-3 mb-3">
+          <div className="row border border-danger p-3 mb-3">
             <div className="col-md-4">
               <img className="img-fluid mx-auto d-block" src={picture3} alt="Project 3" />
             </div>
-            <div class="col">
+            <div className="col">
               <h4>Lenox Village Condominium</h4>
               <p>April 2004</p>
               <p>1024 Lenox Ave. Miami Beach, FL 33139</p>
@@ -68,11 +68,11 @@ export default function OurProjects() {
               </p>
             </div>
           </div>
-          <div class="row border border-danger p-3 mb-3">
+          <div className="row border border-danger p-3 mb-3">
             <div className="col-md-4">
               <img className="img-fluid mx-auto d-block" src={picture4} alt="Project 4" />
             </div>
-            <div class="col">
+            <div className="col">
               <h4>Copy Right Center</h4>
               <p>August 2004</p>
               <p>1122 W Commercial Blvd. Fort Lauderdale, FL</p>
@@ -83,11 +83,11 @@ export default function OurProjects() {
               </p>
             </div>
           </div>
-          <div class="row border border-danger p-3 mb-3">
+          <div className="row border border-danger p-3 mb-3">
             <div className="col-md-4">
               <img className="img-fluid mx-auto d-block" src={picture5} alt="Project 5" />
             </div>
-            <div class="col">
+            <div className="col">
               <h4>South Broward Resource Recovery Facility</h4>
               <p>October 2004</p>
               <p>4400 South State Rd. 7 Fort Lauderdale, FL</p>
