@@ -1,5 +1,8 @@
 import React from 'react'
 
+import Navbar from '../layout/Navbar'
+import Footer from '../layout/Footer'
+
 import picture1 from './images/Home/pic_home_44.jpg'
 import picture2 from './images/Home/pics_home_53.jpg'
 import picture3 from './images/Home/pics_home_55.jpg'
@@ -8,6 +11,7 @@ import picture4 from './images/Home/pics_home_57.jpg'
 export default function Home(props) {
   return (
     <React.Fragment>
+      <Navbar/>
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
           <h1 className="display-4 mb-3"> Welcome To Our Company Site!</h1>
@@ -48,6 +52,7 @@ export default function Home(props) {
             </div>
           </div>
       </div>
+      <Footer/>
     </React.Fragment>
   )
 }
