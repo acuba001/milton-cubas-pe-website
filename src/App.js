@@ -10,6 +10,8 @@ import WhatWeDo from './components/content/WhatWeDo'
 import OurProjects from './components/content/OurProjects'
 import ContactUs from './components/content/ContactUs'
 
+import ACAluminumStand from './components/designs/ACAluminumStand/ACAluminumStand'
+
 function App() {
   return (
     <Router>
@@ -19,6 +21,7 @@ function App() {
         <Route exact path="/what-we-do" component={WhatWeDo}/>
         <Route exact path="/our-projects" component={OurProjects}/>
         <Route exact path="/contact-us" component={ContactUs}/>
+        <Route exact path="/a-c-aluminum-stand-design" component={ACAluminumStand}/>
       </Switch>
     </Router>
   );
