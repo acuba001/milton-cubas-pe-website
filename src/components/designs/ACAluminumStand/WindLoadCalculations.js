@@ -14,7 +14,7 @@ export default class WindLoadCalculations extends Component {
             <dd className="col-4">106.52 psf</dd>
 
             <dt className="col-8">FOR STANDARD SYSTEM USE: </dt>
-            <dd className="col-4">5 FRAMES</dd>
+            <dd className="col-4"><b>5 FRAMES</b></dd>
 
             <dt className="col-8">LATERAL WIND PRESSURE = </dt>
             <dd className="col-4"><b>159 psf</b> > 134.92 psf</dd>
@@ -23,7 +23,7 @@ export default class WindLoadCalculations extends Component {
             <dd className="col-4"><b>125 psf</b> > 106.52 psf</dd>
 
             <dt className="col-8">FOR HEAVY SYSTEM USE: </dt>
-            <dd className="col-4">4 FRAMES</dd>
+            <dd className="col-4"><b>4 FRAMES</b></dd>
 
             <dt className="col-8">LATERAL WIND PRESSURE = </dt>
             <dd className="col-4"><b>162 psf</b> > 134.92 psf</dd>

@@ -9,7 +9,7 @@ export default class SiteConditions extends Component {
         </div>
         <div className="row">
           <div className="input-group row mb-3">
-            <label className="col" htmlFor="ultimateBasicWindSpeed">ULTIMATE SPECIFICATIONS PER STAND (V) = </label>
+            <label className="col" htmlFor="ultimateBasicWindSpeed">ULTIMATE BASIC WIND SPEED (V) = </label>
             <input className="input-control col" type="text" id="ultimateBasicWindSpeed"/>
           </div>
           <div className="input-group row mb-3">

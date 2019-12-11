@@ -17,41 +17,41 @@ export default function ContractorJobInfo() {
       <div className="row">
         <div className="col-6">
           <div className="container">
-            <div className="form-group">
+            <div className="input-group">
               <label htmlFor="companyName">COMPANY NAME:</label>
-              <input className="form-control" type="text" id="companyName"/>
+              <input className="input-control" type="text" id="companyName"/>
             </div>
-            <div className="form-group">
+            <div className="input-group">
               <label htmlFor="companyAddress">CONTRACTOR ADDRESS:</label>
-              <input className="form-control" type="text" id="companyAddress"/>
+              <input className="input-control" type="text" id="companyAddress"/>
             </div>
-            <div className="form-group">
+            <div className="input-group">
               <label htmlFor="companyCityState">CITY, STATE:</label>
-              <input className="form-control" type="text" id="companyCityState"/>
+              <input className="input-control" type="text" id="companyCityState"/>
             </div>
-            <div className="form-group">
+            <div className="input-group">
               <label htmlFor="companyZipcode">ZIPCODE:</label>
-              <input className="form-control" type="text" id="companyZipcode"/>
+              <input className="input-control" type="text" id="companyZipcode"/>
             </div>
           </div>
         </div>
         <div className="col-6">
           <div className="container">
-            <div className="form-group">
+            <div className="input-group">
               <label htmlFor="projectName">PROJECT NAME:</label>
-              <input className="form-control" type="text" id="projectName"/>
+              <input className="input-control" type="text" id="projectName"/>
             </div>
-            <div className="form-group">
+            <div className="input-group">
               <label htmlFor="projectAddress">PROJECT ADDRESS:</label>
-              <input className="form-control" type="text" id="projectAddress"/>
+              <input className="input-control" type="text" id="projectAddress"/>
             </div>
-            <div className="form-group">
+            <div className="input-group">
               <label htmlFor="projectCityState">CITY, STATE:</label>
-              <input className="form-control" type="text" id="projectAddress"/>
+              <input className="input-control" type="text" id="projectAddress"/>
             </div>
-            <div className="form-group">
+            <div className="input-group">
               <label htmlFor="projectZipcode">ZIPCODE:</label>
-              <input className="form-control" type="text" id="projectAddress"/>
+              <input className="input-control" type="text" id="projectAddress"/>
             </div>
           </div>
         </div>
