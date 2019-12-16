@@ -21,7 +21,7 @@ export default class Unit extends Component {
   onChange = (e) => {
     if(this.isValidNum(e.target.value)){
 
-      const { width, deep, high} = this.state
+      const { width, deep, high } = this.state
 
       if(e.target.name === "weight"){
         this.setState({
@@ -37,21 +37,46 @@ export default class Unit extends Component {
           highGood: e.target.value === "" || parseFloat(e.target.value) <= 60,
           frontAreaGood: this.area(width, e.target.value) < 50
         })
+        this.updateFrontArea(this.area(width, e.target.value))
       } else if(e.target.name === "width"){
         this.setState({
           ...this.state, 
           width: e.target.value,
-          topAreaGood: this.area(e.target.value, deep) <= 37.9,
+          topAreaGood: this.area(e.target.value, deep) < 37.9,
           frontAreaGood: this.area(e.target.value, high) < 50
         })
+        this.updateTopArea(this.area(e.target.value, deep))
+        this.updateFrontArea(this.area(e.target.value, high))
+        this.updateStandHeightMinimum(parseFloat(e.target.value))
       } else if(e.target.name === "deep"){
         this.setState({
           ...this.state, 
           deep: e.target.value,
-          topAreaGood: this.area(width, e.target.value) <= 37.9
+          topAreaGood: this.area(width, e.target.value) < 37.9
         })
+        this.updateTopArea(this.area(width, e.target.value))
       }
     }
+  }
+
+  updateTopArea = (topArea) => {
+    const { ind, updateTopArea } = this.props
+    updateTopArea(ind, topArea)
+  }
+
+  updateFrontArea = (frontArea) => {
+    const { ind, updateFrontArea } = this.props
+    updateFrontArea(ind, frontArea)
+  }
+
+  updateStandHeightMinimum = (width) => {
+    let minHeight = 48
+    if(width < 60) minHeight = 30
+    if(width < 48) minHeight = 24
+    if(width < 36) minHeight = 18
+    if(width < 24) minHeight = 14
+    const { ind, updateStandHeightMinimum } = this.props
+    updateStandHeightMinimum(ind, minHeight)
   }
 
   area = (x, y) => {
@@ -83,7 +108,6 @@ export default class Unit extends Component {
         </td>
         <td>
           <input className={classnames({'form-control': true, 'is-invalid': !topAreaGood})} type="text" name={"deep"} value={deep} onChange={this.onChange} placeholder="Deep" />
-          {  }
         </td>
         <td>
           <input className={classnames({'form-control': true, 'is-invalid': !highGood || !frontAreaGood})} type="text" name={"high"} value={high} onChange={this.onChange} placeholder="High" />

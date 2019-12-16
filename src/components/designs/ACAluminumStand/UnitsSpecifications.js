@@ -8,7 +8,27 @@ export default class UnitsSpecifications extends Component {
 
   state = {
     numberOfUnits: 1,
-    units: [{}]
+    unitTopAreas: [0,0,0,0,0,0,0,0,0,0],
+    unitFrontAreas: [0,0,0,0,0,0,0,0,0,0],
+    unitStandHeightMinimum: [0,0,0,0,0,0,0,0,0,0]
+  }
+
+  updateTopArea = (ind, topArea) => {
+    const { unitTopAreas } = this.state
+    unitTopAreas[ind] = topArea
+    this.setState({...this.state, unitTopAreas})
+  }
+
+  updateFrontArea = (ind, frontArea) => {
+    const { unitFrontAreas } = this.state
+    unitFrontAreas[ind] = frontArea
+    this.setState({...this.state, unitFrontAreas})
+  }
+
+  updateStandHeightMinimum = (ind, minHeight) => {
+    const { unitStandHeightMinimum } = this.state
+    unitStandHeightMinimum[ind] = minHeight
+    this.setState({...this.state, unitStandHeightMinimum})
   }
 
   onChangeUnitNum = (e) => {
@@ -17,12 +37,23 @@ export default class UnitsSpecifications extends Component {
 
   render() {
 
-    const { numberOfUnits} = this.state
+    const { numberOfUnits, unitTopAreas, unitFrontAreas, unitStandHeightMinimum } = this.state
+
+    const topAreasTotal = unitTopAreas.reduce((x,y)=>x+y, 0)
+    const frontAreasTotal = unitFrontAreas.reduce((x,y)=>x+y, 0)
 
     let unitForms = []
 
     for(let i = 1; i <= numberOfUnits; i++){
-      unitForms.push(<Unit key={i} ind={i} />)
+      unitForms.push(
+        <Unit
+          key={i} 
+          ind={i} 
+          updateTopArea={this.updateTopArea} 
+          updateFrontArea={this.updateFrontArea} 
+          updateStandHeightMinimum={this.updateStandHeightMinimum}
+        />
+      )
     }
 
     return (
@@ -50,8 +81,8 @@ export default class UnitsSpecifications extends Component {
               <tr>
                 <th scope="col"></th>
                 <th scope="col">WIDTH (in)</th>
-                <th scope="col">DEEP (in)</th>
-                <th scope="col">HIGH (in)</th>
+                <th scope="col">DEPTH (in)</th>
+                <th scope="col">HEIGHT (in)</th>
                 <th scope="col">WEIGHT (lb)</th>
               </tr>
             </thead>
@@ -60,7 +91,9 @@ export default class UnitsSpecifications extends Component {
             </tbody>
           </table>
           <div className="row justify-content-center">
-            <p>MINIMUM STAND HIGH REQUIRED: <b>18.0 in.</b></p>
+            { !(topAreasTotal < 37.9) ? <p className="text-danger">The total top areas is too high!</p> : null}
+            { !(frontAreasTotal < 50) ? <p className="text-danger">The total front areas is too high!</p> : null}
+            <p>MINIMUM STAND HEIGHT REQUIRED: <b>{Math.max(...unitStandHeightMinimum)} in.</b></p>
           </div>
         </div>
       </div>
