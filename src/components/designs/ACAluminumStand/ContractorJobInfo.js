@@ -47,11 +47,11 @@ export default function ContractorJobInfo() {
             </div>
             <div className="input-group">
               <label htmlFor="projectCityState">CITY, STATE:</label>
-              <input className="input-control" type="text" id="projectAddress"/>
+              <input className="input-control" type="text" id="projectCityState"/>
             </div>
             <div className="input-group">
               <label htmlFor="projectZipcode">ZIPCODE:</label>
-              <input className="input-control" type="text" id="projectAddress"/>
+              <input className="input-control" type="text" id="projectZipcode"/>
             </div>
           </div>
         </div>
