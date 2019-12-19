@@ -38,6 +38,7 @@ export default class Unit extends Component {
           frontAreaGood: this.area(width, e.target.value) < 50
         })
         this.updateFrontArea(this.area(width, e.target.value))
+        this.updateHeight(parseFloat(e.target.value))
       } else if(e.target.name === "width"){
         this.setState({
           ...this.state, 
@@ -61,22 +62,28 @@ export default class Unit extends Component {
 
   updateTopArea = (topArea) => {
     const { ind, updateTopArea } = this.props
-    updateTopArea(ind, topArea)
+    updateTopArea(ind-1, topArea)
   }
 
   updateFrontArea = (frontArea) => {
     const { ind, updateFrontArea } = this.props
-    updateFrontArea(ind, frontArea)
+    updateFrontArea(ind-1, frontArea)
+  }
+
+  updateHeight = (height) => {
+    const { ind, updateHeight} = this.props
+    updateHeight(ind-1, height)
   }
 
   updateStandHeightMinimum = (width) => {
+    if(isNaN(width)) return 0
     let minHeight = 48
     if(width < 60) minHeight = 30
     if(width < 48) minHeight = 24
     if(width < 36) minHeight = 18
     if(width < 24) minHeight = 14
     const { ind, updateStandHeightMinimum } = this.props
-    updateStandHeightMinimum(ind, minHeight)
+    updateStandHeightMinimum(ind-1, minHeight)
   }
 
   area = (x, y) => {

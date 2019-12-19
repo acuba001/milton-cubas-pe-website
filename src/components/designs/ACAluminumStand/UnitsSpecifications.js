@@ -10,6 +10,7 @@ export default class UnitsSpecifications extends Component {
     numberOfUnits: 1,
     unitTopAreas: [0,0,0,0,0,0,0,0,0,0],
     unitFrontAreas: [0,0,0,0,0,0,0,0,0,0],
+    unitHeights: [0,0,0,0,0,0,0,0,0,0],
     unitStandHeightMinimum: [0,0,0,0,0,0,0,0,0,0]
   }
 
@@ -25,14 +26,36 @@ export default class UnitsSpecifications extends Component {
     this.setState({...this.state, unitFrontAreas})
   }
 
-  updateStandHeightMinimum = (ind, minHeight) => {
+  updateHeight = (ind, height) => {
+    const { updateMaxUnitHeight } = this.props
+    const { unitHeights } = this.state
+    unitHeights[ind] = height
+    this.setState({...this.state, unitHeights})
+    updateMaxUnitHeight(Math.max(...unitHeights))
+  }
+
+  updateStandHeightMinimum = (i, minHeight) => {
+    const { updateMinStandHeight } = this.props
     const { unitStandHeightMinimum } = this.state
-    unitStandHeightMinimum[ind] = minHeight
+
+    unitStandHeightMinimum[i] = minHeight
     this.setState({...this.state, unitStandHeightMinimum})
+
+    updateMinStandHeight(Math.max(...unitStandHeightMinimum))
   }
 
   onChangeUnitNum = (e) => {
-    this.setState({...this.state, numberOfUnits: e.target.value})
+    const { unitStandHeightMinimum, unitTopAreas, unitFrontAreas } = this.state
+    for(let i = e.target.value; i < 10; i++){
+      unitStandHeightMinimum[i] = 0
+      unitFrontAreas[i] = 0
+      unitTopAreas[i] = 0
+    }
+    this.setState({
+      ...this.state, 
+      numberOfUnits: e.target.value, 
+      unitStandHeightMinimum
+    })
   }
 
   render() {
@@ -51,6 +74,7 @@ export default class UnitsSpecifications extends Component {
           ind={i} 
           updateTopArea={this.updateTopArea} 
           updateFrontArea={this.updateFrontArea} 
+          updateHeight={this.updateHeight}
           updateStandHeightMinimum={this.updateStandHeightMinimum}
         />
       )
@@ -90,9 +114,13 @@ export default class UnitsSpecifications extends Component {
               {unitForms}
             </tbody>
           </table>
-          <div className="row justify-content-center">
+          <div className="row justify-center">
             { !(topAreasTotal < 37.9) ? <p className="text-danger">The total top areas is too high!</p> : null}
+          </div>
+          <div className="row justify-center">
             { !(frontAreasTotal < 50) ? <p className="text-danger">The total front areas is too high!</p> : null}
+          </div>
+          <div className="row justify-content-center">
             <p>MINIMUM STAND HEIGHT REQUIRED: <b>{Math.max(...unitStandHeightMinimum)} in.</b></p>
           </div>
         </div>
