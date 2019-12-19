@@ -31,31 +31,40 @@ export default class Unit extends Component {
         })
       }
       else if (e.target.name === "high"){
+        const frontArea = this.area(width, e.target.value)
+        const height = parseFloat(e.target.value)
         this.setState({
           ...this.state, 
           high: e.target.value,
           highGood: e.target.value === "" || parseFloat(e.target.value) <= 60,
-          frontAreaGood: this.area(width, e.target.value) < 50
+          frontAreaGood: frontArea < 50
+        }, () => {
+          this.updateFrontArea(frontArea)
+          this.updateHeight(height)
         })
-        this.updateFrontArea(this.area(width, e.target.value))
-        this.updateHeight(parseFloat(e.target.value))
       } else if(e.target.name === "width"){
+        const topArea = this.area(e.target.value, deep)
+        const frontArea = this.area(e.target.value, high)
+        const width = parseFloat(e.target.value)
         this.setState({
           ...this.state, 
           width: e.target.value,
-          topAreaGood: this.area(e.target.value, deep) < 37.9,
-          frontAreaGood: this.area(e.target.value, high) < 50
+          topAreaGood: topArea < 37.9,
+          frontAreaGood: frontArea < 50
+        }, () => {
+          this.updateTopArea(topArea)
+          this.updateFrontArea(frontArea)
+          this.updateStandHeightMinimum(width)
         })
-        this.updateTopArea(this.area(e.target.value, deep))
-        this.updateFrontArea(this.area(e.target.value, high))
-        this.updateStandHeightMinimum(parseFloat(e.target.value))
       } else if(e.target.name === "deep"){
+        const topArea = this.area(width, e.target.value)
         this.setState({
           ...this.state, 
           deep: e.target.value,
-          topAreaGood: this.area(width, e.target.value) < 37.9
+          topAreaGood: topArea < 37.9
+        }, () => {
+          this.updateTopArea(topArea)
         })
-        this.updateTopArea(this.area(width, e.target.value))
       }
     }
   }

@@ -15,23 +15,29 @@ export default class UnitsSpecifications extends Component {
   }
 
   updateTopArea = (ind, topArea) => {
+    const { updateTotalTopArea } = this.props
     const { unitTopAreas } = this.state
     unitTopAreas[ind] = topArea
-    this.setState({...this.state, unitTopAreas})
+    const newTotalArea = unitTopAreas.reduce((x,y) => x+y, 0)
+    this.setState(this.state, updateTotalTopArea.bind(this,newTotalArea))
   }
 
   updateFrontArea = (ind, frontArea) => {
+    const { updateTotalFrontArea } = this.props
     const { unitFrontAreas } = this.state
     unitFrontAreas[ind] = frontArea
-    this.setState({...this.state, unitFrontAreas})
+    const totalArea = unitFrontAreas.reduce((x,y) => x+y, 0)
+    this.setState(this.state, updateTotalFrontArea.bind(this,totalArea))
   }
 
   updateHeight = (ind, height) => {
     const { updateMaxUnitHeight } = this.props
     const { unitHeights } = this.state
     unitHeights[ind] = height
-    this.setState({...this.state, unitHeights})
-    updateMaxUnitHeight(Math.max(...unitHeights))
+    this.setState(
+      {...this.state, unitHeights}, 
+      updateMaxUnitHeight.bind(this, Math.max(...unitHeights))
+    )
   }
 
   updateStandHeightMinimum = (i, minHeight) => {
@@ -39,9 +45,10 @@ export default class UnitsSpecifications extends Component {
     const { unitStandHeightMinimum } = this.state
 
     unitStandHeightMinimum[i] = minHeight
-    this.setState({...this.state, unitStandHeightMinimum})
-
-    updateMinStandHeight(Math.max(...unitStandHeightMinimum))
+    this.setState(
+      {...this.state, unitStandHeightMinimum}, 
+      updateMinStandHeight.bind(this, Math.max(...unitStandHeightMinimum))
+    )
   }
 
   onChangeUnitNum = (e) => {

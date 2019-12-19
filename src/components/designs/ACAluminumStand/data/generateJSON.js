@@ -82,8 +82,8 @@ function convertPapaToJSON(papaData){
     if(curFrontArea !== papaData[i][0] || curUnitHeight !== papaData[i][1] || curTopArea !== papaData[i][3]){
       let newData = {
         "frontArea": parseFloat(papaData[i][0]),
-        "topArea": parseFloat(papaData[i][1]),
-        "unitHeight": parseFloat(papaData[i][3]),
+        "unitHeight": parseFloat(papaData[i][1]),
+        "topArea": parseFloat(papaData[i][3]),
         "values": []
       }
       curFrontArea = papaData[i][0]

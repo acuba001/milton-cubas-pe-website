@@ -15,14 +15,20 @@ export default class SiteConditions extends Component {
   onChange = (e) => {
     const { updateSiteData } = this.props
     if(this.isValidNum(e.target.value)){
-      this.setState({...this.state, [e.target.name]: e.target.value})
-
+      let name = e.target.name
       let value = e.target.value === "" ? 0 : parseFloat(e.target.value)
-      updateSiteData(e.target.name, value)
+      this.setState(
+        {...this.state, [e.target.name]: e.target.value},
+        updateSiteData.bind(this, name, value)
+      )
     }
     if(e.target.name === "exposureCategory"){
-      this.setState({...this.state, [e.target.name]: e.target.value})
-      updateSiteData(e.target.name, e.target.value)
+      const name = e.target.name
+      const value = e.target.value
+      this.setState(
+        {...this.state, [name]: value},
+        updateSiteData.bind(this, name, value)
+      )
     }
     
   }

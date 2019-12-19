@@ -13,7 +13,9 @@ export default class ACAluminumStand extends Component {
     exposureCategory: "C",
     totalRoofHeight: 0,
     maxUnitHeight: 0,
-    minStandHeight: 0
+    minStandHeight: 0,
+    totalFrontArea: 0,
+    totalTopArea: 0
   }
 
   updateSiteData = (name, value) => {
@@ -28,6 +30,14 @@ export default class ACAluminumStand extends Component {
     this.setState({...this.state, minStandHeight: newHeight})
   }
 
+  updateTotalFrontArea = (newArea) => {
+    this.setState({...this.state, totalFrontArea: newArea})
+  }
+
+  updateTotalTopArea = (newArea) => {
+    this.setState({...this.state, totalTopArea: newArea})
+  }
+
   render() {
 
     const {
@@ -35,7 +45,9 @@ export default class ACAluminumStand extends Component {
       exposureCategory,
       totalRoofHeight,
       maxUnitHeight,
-      minStandHeight
+      minStandHeight,
+      totalFrontArea,
+      totalTopArea
     } = this.state
 
     return (
@@ -56,6 +68,8 @@ export default class ACAluminumStand extends Component {
             <UnitsSpecifications
               updateMaxUnitHeight={this.updateMaxUnitHeight}
               updateMinStandHeight={this.updateMinStandHeight}
+              updateTotalFrontArea={this.updateTotalFrontArea}
+              updateTotalTopArea={this.updateTotalTopArea}
             />
             <hr/>
             <WindLoadCalculations
@@ -64,6 +78,8 @@ export default class ACAluminumStand extends Component {
               totalRoofHeight={totalRoofHeight}
               maxUnitHeight={maxUnitHeight}
               minStandHeight={minStandHeight}
+              totalFrontArea={totalFrontArea}
+              totalTopArea={totalTopArea}
             />
           </div>
         </div>
